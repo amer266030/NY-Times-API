@@ -4,7 +4,7 @@ import 'package:nytimes/networking/utils/from_json.dart';
 
 import '../model/data.dart';
 
-mixin GetNewsLogic on NetworkMgr {
+mixin NYTimesApi on NetworkMgr {
   Future<Data> fetchNewsData(EndPoint endPoint, TimePeriod timePeriod) async {
     var url = await endPointPath(endPoint: endPoint, period: timePeriod);
     final response = await http.get(Uri.parse(url));

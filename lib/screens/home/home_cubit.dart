@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 import 'package:nytimes/networking/network_mgr.dart';
 import 'package:nytimes/networking/networking_api.dart';
@@ -17,6 +18,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   loadData() async {
     try {
+      if (kDebugMode) {
+        print('EndPoint: ${endPoint.name}, TimePeriod: ${timePeriod.name}');
+      }
       emit(HomeLoadState());
       newsData = await api.fetchNewsData(endPoint, timePeriod);
       emit(SuccessState());

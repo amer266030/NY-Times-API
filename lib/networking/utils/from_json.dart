@@ -32,7 +32,7 @@ class FromJson {
     }
   }
 
-//Single Item
+// Single Item
   static Future<T> decodeItem<T>({
     required String responseBody,
     required T Function(Map<String, dynamic>) fromJson,
