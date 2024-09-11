@@ -13,21 +13,33 @@ class NewsCard extends StatelessWidget {
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(item.section,
-                      style: const TextStyle(fontWeight: FontWeight.w300)),
-                  Text(item.subsection,
-                      style: const TextStyle(fontWeight: FontWeight.w300)),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(item.section,
+                            style:
+                                const TextStyle(fontWeight: FontWeight.w300)),
+                        Text(item.subsection,
+                            style:
+                                const TextStyle(fontWeight: FontWeight.w300)),
+                      ],
+                    ),
+                    const Divider(),
+                    Text(item.title,
+                        style: const TextStyle(fontWeight: FontWeight.w600)),
+                  ],
+                ),
               ),
-              const Divider(),
-              Text(item.title,
-                  style: const TextStyle(fontWeight: FontWeight.w600)),
+              const Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Icon(Icons.chevron_right),
+              ),
             ],
           ),
         ),
