@@ -3,17 +3,22 @@ import 'package:meta/meta.dart';
 import 'package:nytimes/networking/network_mgr.dart';
 import 'package:nytimes/networking/networking_api.dart';
 
+import '../../model/data.dart';
+
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final api = NetworkingApi();
+  Data? newsData;
+  var endPoint = EndPoint.viewed;
+  var timePeriod = TimePeriod.week;
+
   HomeCubit() : super(HomeInitial());
 
-  loadData() {
-    print('I am here');
+  loadData() async {
     try {
       emit(HomeLoadState());
-      api.getNews(EndPoint.emailed, TimePeriod.day);
+      newsData = await api.fetchNewsData(endPoint, timePeriod);
       emit(SuccessState());
     } catch (e) {
       emit(ErrorState());

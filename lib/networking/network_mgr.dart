@@ -4,8 +4,7 @@ abstract class NetworkMgr {
       {required EndPoint endPoint,
       required TimePeriod period,
       required String apiKey}) {
-    print('$baseUrl${endPoint.name}$period?api-key=$apiKey');
-    return '$baseUrl${endPoint.name}$period';
+    return '$baseUrl/${endPoint.name}/${period.strValue}?api-key=$apiKey';
   }
 }
 
