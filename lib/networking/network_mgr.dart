@@ -1,9 +1,15 @@
+import 'package:nytimes/networking/utils/api_authorization.dart';
+
 abstract class NetworkMgr {
   String baseUrl = 'https://api.nytimes.com/svc/mostpopular/v2';
-  String endPointPath(
-      {required EndPoint endPoint,
-      required TimePeriod period,
-      required String apiKey}) {
+  String apiKey = '';
+  Future<String> endPointPath({
+    required EndPoint endPoint,
+    required TimePeriod period,
+  }) async {
+    if (apiKey.isEmpty) {
+      apiKey = await APIAuthorization.fetchApiKey();
+    }
     return '$baseUrl/${endPoint.name}/${period.strValue}?api-key=$apiKey';
   }
 }

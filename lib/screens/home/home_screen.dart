@@ -48,9 +48,9 @@ class NewsCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(item.section,
-                    style: TextStyle(fontWeight: FontWeight.w300)),
+                    style: const TextStyle(fontWeight: FontWeight.w300)),
                 Text(item.subsection,
-                    style: TextStyle(fontWeight: FontWeight.w300)),
+                    style: const TextStyle(fontWeight: FontWeight.w300)),
               ],
             ),
             const Divider(),
